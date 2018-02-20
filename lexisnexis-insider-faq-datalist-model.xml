@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model name="lnindlfaq:datalistmodel" xmlns="http://www.alfresco.org/model/dictionary/1.0">
+
+   <!-- Meta-data about the model -->
+   <description>Custom Datalist Model for Insider FAQ</description>
+   <author>Jerry Jacob</author>
+   <version>0.1</version>
+   <!-- Imports are required to allow references to definitions in other models -->
+   <imports>
+      <!-- Import Alfresco Dictionary Definitions -->
+      <import uri="http://www.alfresco.org/model/dictionary/1.0" prefix="d"/>
+      <!-- Import Alfresco Content Domain Model Definitions -->
+      <import uri="http://www.alfresco.org/model/content/1.0" prefix="cm"/>
+      <!-- Import Alfresco Content Domain Model Definitions -->
+      <import uri="http://www.alfresco.org/model/system/1.0" prefix="sys" />
+      <import uri="http://www.alfresco.org/model/datalist/1.0" prefix="dl" />
+   </imports>
+    <namespaces>
+        <namespace uri="http://www.lexisnexis.com/insider/faq/datalist/1.0" prefix="lnindlfaq" />
+    </namespaces>
+ <constraints>
+        <constraint name="lnindlfaq:newCategoryList" type="LIST">
+            <parameter name="allowedValues">
+              <list>
+					<value>Categories - All</value>
+                     <value>Facility/Security</value>
+                     <value>Employee Perks Websites</value>
+                     <value>Human Resources</value>
+                     <value>Legal</value>
+                     <value>Marketing</value>
+                     <value>Purchasing/Finance</value>
+                     <value>Technology</value>
+                     <value>Travel</value>
+                     <value>Sales</value>
+                     <value>Cultural Navigator</value>
+                     <value>Tools and Resources</value>
+                     <value>Others</value>
+			</list>
+              
+            </parameter>
+        </constraint>
+</constraints>   
+    <types>
+        <!-- FAQ list Insider -->
+        <type name="lnindlfaq:faqdetails">
+			 <title>Insider FAQ List</title>
+			 <parent>dl:dataListItem</parent>
+			 <properties>
+              <property name="lnindlfaq:topicCategory">
+                    <title>Category</title>
+                    <type>d:text</type> 
+               		<mandatory>true</mandatory> 
+                    <constraints>
+                        <constraint ref="lnindlfaq:newCategoryList" />
+                    </constraints>      
+              </property> 
+				<property name="lnindlfaq:faqcatid">
+				   <title>Cat_Id</title>
+				   <type>d:int</type>				   
+				</property>
+				<property name="lnindlfaq:faqdescription">
+				   <title>Category Description</title>
+				   <type>d:text</type>				   
+				</property>
+				<property name="lnindlfaq:faqqstnid">
+				   <title>Question_Id</title>
+				   <type>d:int</type>				   
+				</property>
+				<property name="lnindlfaq:question">
+				   <title>Question</title>
+				   <type>d:text</type>		   
+				</property>
+				<property name="lnindlfaq:faqAnswer">
+				   <title>Answer</title>
+				   <type>d:text</type>	
+				    <mandatory>true</mandatory>				   
+				</property>		
+			 </properties>
+        </type>
+	</types>
+</model>
